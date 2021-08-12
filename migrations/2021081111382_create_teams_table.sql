@@ -1,0 +1,15 @@
+
+-- +goose Up
+CREATE TABLE IF NOT EXISTS `teams` (
+  `id` BINARY(16) NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `address` VARCHAR(200),
+  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `deleted_at` DATETIME,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- +goose Down
+DROP TABLE `teams`;
