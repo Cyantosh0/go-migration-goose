@@ -1,6 +1,7 @@
 package main
 
 import (
+	"embed"
 	"fmt"
 	"log"
 
@@ -8,6 +9,7 @@ import (
 	"github.com/joho/godotenv"
 
 	"github.com/Cyantosh0/goose-migration/config"
+	"github.com/pressly/goose/v3"
 )
 
 func main() {
@@ -18,4 +20,11 @@ func main() {
 
 	config.DB = config.SetupDatabase()
 	fmt.Println("DB Connection: Success")
+
+	var embedMigrations embed.FS
+	goose.SetBaseFS(embedMigrations)
+	if err := goose.Up(config.DB.DB(), "migrations", goose.WithAllowMissing()); err != nil {
+		fmt.Println("Error occurred in migration:", err)
+	}
+
 }
