@@ -35,13 +35,3 @@ Migrate up to a specific version.
 **up-by-one**
 Migrate up a single migration from the current version
 > goose -dir=migrations mysql "db_user:db_password@/db_name?parseTime=true" up-by-one
-
-
-### Issues with goose
-**Up command don't run all pending migrations**
-If there is a migration that is older than the current version then those pending migration will not gets migrated when up.
-
-##### How to run pending migration?
-1. Down the migration to the version number before the pending migration and then up migration.
-But this will cause loss of data from database.
-2. From the `goose_db_version` table, delete all the versions data after the pending migration file and then up migration.
