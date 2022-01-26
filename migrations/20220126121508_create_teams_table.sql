@@ -1,4 +1,3 @@
-
 -- +goose Up
 CREATE TABLE IF NOT EXISTS `teams` (
   `id` BINARY(16) NOT NULL,
@@ -9,7 +8,6 @@ CREATE TABLE IF NOT EXISTS `teams` (
   `deleted_at` DATETIME,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 
 -- +goose Down
 DROP TABLE `teams`;

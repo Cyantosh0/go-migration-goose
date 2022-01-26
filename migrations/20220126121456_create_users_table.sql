@@ -1,4 +1,3 @@
-
 -- +goose Up
 CREATE TABLE IF NOT EXISTS `users` (
   `id` VARCHAR(28) NOT NULL, 
@@ -12,6 +11,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   CONSTRAINT email_unique UNIQUE(email)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8mb4;
 
-
 -- +goose Down
 DROP TABLE `users`;
+

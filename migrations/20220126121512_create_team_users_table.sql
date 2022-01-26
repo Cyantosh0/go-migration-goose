@@ -1,4 +1,3 @@
-
 -- +goose Up
 CREATE TABLE IF NOT EXISTS `team_users` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -14,7 +13,6 @@ CREATE TABLE IF NOT EXISTS `team_users` (
   CONSTRAINT `fk_team_users_team_id_teams_id` FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_team_users_user_id_users_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 
 -- +goose Down
 DROP TABLE `team_users`;
