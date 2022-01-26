@@ -12,6 +12,9 @@ import (
 	"github.com/pressly/goose/v3"
 )
 
+//go:embed migrations/*.sql
+var embedMigrations embed.FS
+
 func main() {
 	err := godotenv.Load(".env")
 	if err != nil {
@@ -21,10 +24,8 @@ func main() {
 	config.DB = config.SetupDatabase()
 	fmt.Println("DB Connection: Success")
 
-	var embedMigrations embed.FS
 	goose.SetBaseFS(embedMigrations)
 	if err := goose.Up(config.DB.DB(), "migrations", goose.WithAllowMissing()); err != nil {
 		fmt.Println("Error occurred in migration:", err)
 	}
-
 }
